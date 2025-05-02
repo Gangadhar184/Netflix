@@ -51,7 +51,7 @@ const Login = () => {
                         if (error.code && error.code.includes('auth')) {
                             setErrorMessage(error.message);
                         } else {
-                            // For more serious errors, redirect to error page
+
                             navigate('/error');
                         }
                     });
@@ -66,7 +66,7 @@ const Login = () => {
                     if (errorCode && errorCode.includes('auth')) {
                         setErrorMessage(errorCode + " - " + errorMessage);
                     } else {
-                        // For more serious errors, redirect to error page
+
                         navigate('/error');
                     }
                 });
@@ -75,12 +75,11 @@ const Login = () => {
             //SignIn logic
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
-                    // Signed in
-                    const user = userCredential.user;
-                    // ...
 
-                    console.log(user);
-                    navigate('/browse')
+
+                    const user = userCredential.user;
+
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
