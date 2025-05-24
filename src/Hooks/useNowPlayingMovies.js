@@ -1,10 +1,15 @@
 import { API_OPTIONS } from "../constants/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
+
+  //removing unneccessary api calls
+  const nowPlayingMovies = useSelector(
+    (store) => store.movies.nowPlayingMovies
+  );
 
   const getNowPlayingMovies = async () => {
     const data = await fetch(
@@ -12,11 +17,13 @@ const useNowPlayingMovies = () => {
       API_OPTIONS
     );
     const json = await data.json();
-   
+
     dispatch(addNowPlayingMovies(json.results));
   };
   useEffect(() => {
-    getNowPlayingMovies();
+    !nowPlayingMovies && getNowPlayingMovies();
   }, []);
 };
 export default useNowPlayingMovies;
+
+//do memoization in this hook, we dont have to do api call everytime we comeback

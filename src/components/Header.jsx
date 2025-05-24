@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleGPTSearchView } from '../utils/gptSlice';
 import { SUPPORTED_LANGUAGES } from '../constants/constants.js';
+import { changeLanguage } from '../utils/configSlice.js';
 
 
 
@@ -13,6 +14,7 @@ const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector(store => store.user);
+    const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
     const handleSignOut = () => {
         signOut(auth).then(() => {
@@ -44,6 +46,10 @@ const Header = () => {
         dispatch(toggleGPTSearchView())
     }
 
+    const handleLanguageChange = (e) => {
+        dispatch(changeLanguage(e.target.value))
+    }
+
     return (
         <div className=' w-full z-50 '>
             <div className='container mx-auto px-3 sm:px-4 py-3 sm:py-4 md:py-6 flex items-center justify-between absolute  z-50  bg-gradient-to-b from-black '>
@@ -54,16 +60,16 @@ const Header = () => {
                 <div className="flex items-center">
                     {user && (
                         <div className="flex items-center gap-4">
-                            <select className='bg-gray-500 rounded-2 p-2'>
+                            {showGptSearch && <select className='bg-gray-500 rounded-2 p-2' onChange={handleLanguageChange} >
                                 {
                                     SUPPORTED_LANGUAGES.map((languages) => (
                                         <option key={languages.identifier} value={languages.identifier}>{languages.name}</option>
                                     ))
                                 }
 
-                            </select>
+                            </select>}
                             <button onClick={handleGPTSearchClick} className="bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded cursor-pointer ">
-                                GPT Search
+                                {showGptSearch ? "Home Page" : "GPT Search"}
                             </button>
 
                             {user.photoURL && (

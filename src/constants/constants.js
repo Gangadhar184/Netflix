@@ -15,3 +15,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "jp", name: "Japanese" },
   { identifier: "es", name: "Spanish" },
 ];
+
+export const GEMINI_KEY = "AIzaSyDCLZApat0J1hZw087e64JnIWtsSq8cRuY";
