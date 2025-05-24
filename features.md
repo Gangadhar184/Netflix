@@ -25,3 +25,11 @@
 - NetflixGPT
   - Search Bar
   - Movie Suggestions
+
+- In browse page
+  -MainContainer
+  - VideoBackground
+  - Video Title
+  -SecondaryContainer
+  - MovieList * n
+    - Cards * n
