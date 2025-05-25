@@ -2,7 +2,7 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "Bearer " + import.meta.env.VITE_REACT_APP_TMDB_KEY,
+    Authorization: "Bearer " + import.meta.env.VITE_TMDB_KEY,
   },
 };
 
@@ -15,4 +15,4 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "es", name: "Spanish" },
 ];
 
-export const GEMINI_KEY = import.meta.env.VITE_REACT_APP_VERTEXAI_KEY;
+export const GEMINI_KEY = import.meta.env.VITE_VERTEXAI_KEY;
