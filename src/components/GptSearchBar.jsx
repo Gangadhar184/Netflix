@@ -47,11 +47,11 @@ const GptSearchBar = () => {
                 contents: query,
             });
 
-            console.log(geminiResults.text);
+            // console.log(geminiResults.text);
 
             //converting results into array
             const moviesRecommendation = geminiResults.text.split(", ");
-            console.log(moviesRecommendation);
+            // console.log(moviesRecommendation);
 
             //[Avatar, Avengers: Endgame, Avatar: The Way of Water, Titanic, Star Wars: The Force Awakens]
             //for each movie i will search in tmdb 
@@ -59,7 +59,7 @@ const GptSearchBar = () => {
             const promiseArray = moviesRecommendation.map((movie) => searchMovieTMDB(movie));
             //for each movie we get 5 promises [promise, promise, promise, promise, promise]
             const tmdbResults = await Promise.all(promiseArray);
-            console.log(tmdbResults);
+            // console.log(tmdbResults);
             // dispatch(addGPTMovieResult(tmdbResults));
 
             //we will see here how to dispatch multiple (movieNames, tmdbResults) using redux, we have to create a object 
