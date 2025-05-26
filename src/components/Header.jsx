@@ -85,7 +85,6 @@ const Header = () => {
                             >
                                 {showGptSearch ? "Home Page" : "GPT Search"}
                             </button>
-
                             {user.photoURL && (
                                 <div className="flex flex-col items-center">
                                     <img src={user.photoURL} alt="User" className="w-10 h-10 rounded-full border-2 border-red-600" />
