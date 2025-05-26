@@ -9,7 +9,7 @@ const MovieCard = ({ posterPath }) => {
       <img
         src={IMG_URL + posterPath}
         alt="Movie Poster"
-        className="w-full h-auto rounded-md object-cover"
+        className="w-full h-auto rounded-md cursor-pointer object-cover"
       />
     </div>
   );

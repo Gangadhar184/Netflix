@@ -17,7 +17,6 @@ const Browse = () => {
          
                     <Header />
             
-
                 {
                     showGptSearch ? <GptSearch /> :
                         <>

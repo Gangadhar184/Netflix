@@ -54,7 +54,7 @@ const Header = () => {
 
     return (
         <div className='w-full z-50'>
-            <div className='container mx-auto px-3 sm:px-4 py-3 sm:py-4 md:py-6 flex flex-wrap items-center justify-between absolute z-50  bg-gradient-to-b from-black'>
+            <div className='w-full mx-auto px-3 sm:px-4 py-3 sm:py-4 md:py-6 flex flex-wrap items-center justify-between absolute z-50  bg-gradient-to-b from-black'>
                 {/* Logo */}
                 <Link to="/" className='w-24 md:w-32'>
                     {/* SVG logo here */}
@@ -81,7 +81,7 @@ const Header = () => {
                             )}
                             <button
                                 onClick={handleGPTSearchClick}
-                                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                                className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white px-4 py-2 rounded"
                             >
                                 {showGptSearch ? "Home Page" : "GPT Search"}
                             </button>
@@ -97,7 +97,7 @@ const Header = () => {
                             )}
                             <button
                                 onClick={handleSignOut}
-                                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
+                                className="bg-red-600 cursor-pointer hover:bg-red-700 text-white px-4 py-2 rounded"
                             >
                                 Sign Out
                             </button>
