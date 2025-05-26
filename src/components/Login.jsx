@@ -76,9 +76,7 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
 
-
                     const user = userCredential.user;
-
 
                 })
                 .catch((error) => {
@@ -132,7 +130,7 @@ const Login = () => {
                                 className="w-full rounded bg-gray-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-600"
                                 type="text"
                                 name="text"
-                                placeholder="Email or phone number"
+                                placeholder="Email"
                             />
                             <input
                                 ref={password}

@@ -12,9 +12,12 @@ const Browse = () => {
 
     useNowPlayingMovies()
     return (
-        <div className="min-h-screen  text-white">
+        <div className="min-h-screen    text-white">
             <div className="relative">
-                <Header />
+         
+                    <Header />
+            
+
                 {
                     showGptSearch ? <GptSearch /> :
                         <>
