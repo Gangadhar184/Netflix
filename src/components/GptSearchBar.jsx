@@ -14,12 +14,13 @@ const GptSearchBar = () => {
     const searchMovieTMDB = useCallback(async (movie) => {
         try {
             const response = await fetch(
-                `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
+                `https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(
                     movie
                 )}&include_adult=false&language=en-US&page=1`,
                 API_OPTIONS
             );
             const data = await response.json();
+            console.log(data);
             return data.results;
         } catch (error) {
             console.error("Error searching movie from TMDB:", error);
@@ -37,7 +38,7 @@ const GptSearchBar = () => {
 
                             User Query: "${searchQuery}"
 
-                            Based on the query, provide exactly 5 recommendations that match their request. Follow these rules:
+                            Based on the query, provide exactly 10 recommendations that match their request. Follow these rules:
 
                             1. If they ask for MOVIES - recommend only movies
                             2. If they ask for TV SHOWS/SERIES - recommend only TV shows/web series  
@@ -50,9 +51,9 @@ const GptSearchBar = () => {
                             Example outputs:
                             - For movies: "The Dark Knight, Inception, Interstellar, The Matrix, Fight Club"
                             - For anime: "Attack on Titan, Demon Slayer, One Piece, Naruto, Death Note"
-                            - For TV shows: "Breaking Bad, Game of Thrones, Stranger Things, The Office, Friends"
+                            - For TV shows: "Breaking Bad, Game of Thrones, Peaky Blinders, The Office, Friends"
 
-                            Provide your 5 recommendations now:
+                            Provide your 10 recommendations now:
 `;
 
                 const geminiResults = await ai.models.generateContent({
