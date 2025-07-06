@@ -20,7 +20,7 @@ const GptSearchBar = () => {
                 API_OPTIONS
             );
             const data = await response.json();
-            console.log(data);
+           
             return data.results;
         } catch (error) {
             console.error("Error searching movie from TMDB:", error);
